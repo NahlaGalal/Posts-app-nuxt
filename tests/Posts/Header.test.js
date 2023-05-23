@@ -1,7 +1,6 @@
 import PostsHeader from "../../components/Posts/Header.vue";
 import { mount } from "@vue/test-utils";
 import ElementPlus from "element-plus";
-import { it } from "node:test";
 
 let wrapper;
 
@@ -19,7 +18,7 @@ describe("Render posts page header successfully", () => {
     expect(wrapper.exists()).toBe(true);
 
     // Check the text is rendered correctly
-    expect(wrapper.find("[data-test='blog-tag']").text()).toBe('Our blog');
+    expect(wrapper.find("[data-test='blog-tag']").text()).toBe("Our blog");
     expect(wrapper.find("[data-test='main-header']").text()).toBe(
       "Resources and Insights"
     );
@@ -30,5 +29,5 @@ describe("Render posts page header successfully", () => {
 
   it("should search posts successfully", async () => {
     await wrapper.find("[data-test='search-input'").setValue("sunt");
-  })
+  });
 });
