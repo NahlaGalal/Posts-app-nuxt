@@ -24,10 +24,14 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { Search } from '@element-plus/icons-vue'
 
-const search = ref("");
+const { search } = defineProps({
+  search: {
+    type: String,
+    default: ''
+  }
+})
 </script>
 
 <style lang="scss">

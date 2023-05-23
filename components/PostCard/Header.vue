@@ -2,20 +2,35 @@
 <template>
   <!-- User avatar with a first letter of his name -->
   <span class="el-card__header__avatar" data-test="user-avatar">
-    E
+    {{ user.name[0].toLocaleUpperCase() }}
   </span>
 
   <!-- User name -->
-  <nuxt-link to="/user/1" data-test="user-name" class="el-card__header__name">Nahla Galal</nuxt-link>
+  <nuxt-link :to="'/user/' + userId" data-test="user-name" class="el-card__header__name">{{ user.name }}</nuxt-link>
 
   <!-- Link to post -->
-  <nuxt-link to="/post/1" data-test="post-link" class="el-card__header__link">
-    <el-icon size="16"><TopRight /></el-icon>
+  <nuxt-link :to="'/post/' + postId" data-test="post-link" class="el-card__header__link">
+    <el-icon size="16">
+      <TopRight />
+    </el-icon>
   </nuxt-link>
 </template>
 
 <script setup>
 import { TopRight } from '@element-plus/icons-vue'
+
+const { postId, user } = defineProps({
+  postId: {
+    type: Number,
+    required: true,
+  },
+  user: {
+    type: Object,
+    required: true,
+  }
+})
+
+console.log(user)
 </script>
 
 <style lang="scss">
@@ -27,7 +42,7 @@ import { TopRight } from '@element-plus/icons-vue'
     flex-wrap: wrap;
     padding: 0;
     border: 0;
-  
+
     &__avatar {
       display: flex;
       justify-content: center;
@@ -40,14 +55,14 @@ import { TopRight } from '@element-plus/icons-vue'
       font-weight: 700;
       font-size: 20px;
     }
-  
+
     &__name {
       font-size: 14px;
       color: var(--el-color-black);
       font-weight: 500;
       text-decoration: none;
     }
-  
+
     &__link {
       color: var(--el-color-black);
       margin-left: auto;

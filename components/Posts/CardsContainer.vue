@@ -2,25 +2,15 @@
   <main class="custom-container Cards-container">
     <!-- First two blogs in one row -->
     <el-row :gutter="32" class="first-blogs">
-      <el-col :xs="24" :sm="12" tag="section">
-        <PostCard />
-      </el-col>
-
-      <el-col :xs="24" :sm="12" tag="section">
-        <PostCard />
+      <el-col :xs="24" :sm="12" tag="section" v-for="post in posts.slice(0, 2)" :key="post.id">
+        <PostCard :post="post" />
       </el-col>
     </el-row>
 
     <!-- Rest of blogs -->
     <el-row :gutter="32">
-      <el-col :xs="24" :sm="12" :lg="8" tag="section">
-        <PostCard />
-      </el-col>
-      <el-col :xs="24" :sm="12" :lg="8" tag="section">
-        <PostCard />
-      </el-col>
-      <el-col :xs="24" :sm="12" :lg="8" tag="section">
-        <PostCard />
+      <el-col :xs="24" :sm="12" :lg="8" tag="section" v-for="post in posts.slice(2)" :key="post.id">
+        <PostCard :post="post" />
       </el-col>
     </el-row>
 
@@ -30,6 +20,12 @@
 </template>
 
 <script setup>
+const { posts } = defineProps({
+  posts: {
+    type: Array,
+    default: [],
+  }
+})
 </script>
 
 <style lang="scss">

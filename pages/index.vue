@@ -1,11 +1,14 @@
 <template>
-  <PostsHeader />
-  <PostsCardsContainer />
+  <PostsHeader :search="search" />
+  <Loading v-if="pending" />
+  <PostsCardsContainer v-else :posts="posts" />
 </template>
 
 <script setup>
-</script>
+import { ref } from "vue";
 
-<style lang="scss">
-  
-</style>
+const page = ref(1);
+const search = ref('');
+
+const { data: posts, pending } = await useFetch("https://jsonplaceholder.typicode.com/posts?_expand=user&_limit=20")
+</script>

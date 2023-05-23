@@ -1,20 +1,30 @@
 <template>
   <el-card class="Postcard" data-test="post-card">
     <template #header>
-      <PostCardHeader />
+      <PostCardHeader :postId="post.id" :user="post.user" />
     </template>
 
     <!-- Post name -->
-    <nuxt-link to="/post/1" data-test="post-title" class="Postcard__title strict-lines strict-lines--one">Title Title
-      Title Title Title </nuxt-link>
+    <nuxt-link :to="'/post/' + post.id" data-test="post-title" class="Postcard__title strict-lines strict-lines--one">
+      {{ post.title }}
+    </nuxt-link>
 
     <!-- Post small description -->
-    <p data-test="post-body" class="Postcard__body strict-lines">Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy
-      Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy Bosy </p>
+    <p data-test="post-body" class="Postcard__body strict-lines">
+      {{ post.body }}
+    </p>
   </el-card>
 </template>
 
 <script setup>
+const { post } = defineProps({
+  post: {
+    type: Object,
+    required: true,
+  }
+})
+
+console.log(post)
 </script>
 
 <style lang="scss">
