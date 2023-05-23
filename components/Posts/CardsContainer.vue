@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-const { posts } = defineProps({
+defineProps({
   posts: {
     type: Array,
     default: [],

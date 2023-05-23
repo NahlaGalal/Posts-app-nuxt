@@ -12,8 +12,8 @@
 
     <!-- Search input  -->
     <div class="Header__search">
-      <el-input type="search" placeholder="Search" name="search" data-test="search-input" v-model="search"
-        class="Header__search__input" :prefix-icon="Search" />
+      <el-input type="search" placeholder="Search" name="search" data-test="search-input" :value="modelValue"
+        @input="$emit('update:modelValue', $event)" class="Header__search__input" :prefix-icon="Search" />
     </div>
 
     <!-- Span for background only  -->
@@ -26,12 +26,8 @@
 <script setup>
 import { Search } from '@element-plus/icons-vue'
 
-const { search } = defineProps({
-  search: {
-    type: String,
-    default: ''
-  }
-})
+defineProps(['modelValue'])
+defineEmits(['update:modelValue'])
 </script>
 
 <style lang="scss">

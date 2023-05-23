@@ -17,14 +17,12 @@
 </template>
 
 <script setup>
-const { post } = defineProps({
+defineProps({
   post: {
     type: Object,
     required: true,
   }
 })
-
-console.log(post)
 </script>
 
 <style lang="scss">

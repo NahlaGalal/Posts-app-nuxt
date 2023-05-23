@@ -6,7 +6,7 @@
   </span>
 
   <!-- User name -->
-  <nuxt-link :to="'/user/' + userId" data-test="user-name" class="el-card__header__name">{{ user.name }}</nuxt-link>
+  <nuxt-link :to="'/user/' + user.id" data-test="user-name" class="el-card__header__name">{{ user.name }}</nuxt-link>
 
   <!-- Link to post -->
   <nuxt-link :to="'/post/' + postId" data-test="post-link" class="el-card__header__link">
@@ -19,7 +19,7 @@
 <script setup>
 import { TopRight } from '@element-plus/icons-vue'
 
-const { postId, user } = defineProps({
+defineProps({
   postId: {
     type: Number,
     required: true,
@@ -29,8 +29,6 @@ const { postId, user } = defineProps({
     required: true,
   }
 })
-
-console.log(user)
 </script>
 
 <style lang="scss">
