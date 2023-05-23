@@ -1,6 +1,6 @@
-<template >
+<template lang="">
   <div>
-    Hello
+    <Loading />
   </div>
 </template>
 
