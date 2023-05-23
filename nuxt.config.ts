@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@element-plus/nuxt"],
+  modules: ["@element-plus/nuxt", "@nuxtjs/google-fonts"],
   elementPlus: {
     importStyle: "scss",
   },
@@ -15,6 +15,11 @@ export default defineNuxtConfig({
           additionalData: '@use "@/assets/styles/global.scss" as *;',
         },
       },
+    },
+  },
+  googleFonts: {
+    families: {
+      Inter: [400, 500, 600, 700]
     },
   },
 });

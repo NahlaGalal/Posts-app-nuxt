@@ -1,6 +1,7 @@
 <template>
-  <PostsHeader />
-  <PostsCardsContainer />
+  <el-card>
+    Test
+  </el-card>
 </template>
 
 <script setup>
