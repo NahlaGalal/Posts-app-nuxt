@@ -25,7 +25,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { Calendar, Search } from '@element-plus/icons-vue'
+import { Search } from '@element-plus/icons-vue'
 
 const search = ref("");
 </script>
