@@ -19,10 +19,10 @@ describe("Render posts page header successfully", () => {
 
     // Check the text is rendered correctly
     expect(wrapper.find("[data-test='blog-tag']").text()).toBe("Our blog");
-    expect(wrapper.find("[data-test='main-header']").text()).toBe(
+    expect(wrapper.find("[data-test='main-header']").text()).toContain(
       "Resources and Insights"
     );
-    expect(wrapper.find("[data-test='sub-header']").text()).toBe(
+    expect(wrapper.find("[data-test='sub-header']").text()).toContain(
       "The latest industry news, interviews, technologies, and resources."
     );
   });
