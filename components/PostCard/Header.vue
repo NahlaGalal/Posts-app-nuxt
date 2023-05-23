@@ -1,0 +1,58 @@
+
+<template>
+  <!-- User avatar with a first letter of his name -->
+  <span class="el-card__header__avatar" data-test="user-avatar">
+    E
+  </span>
+
+  <!-- User name -->
+  <nuxt-link to="/user/1" data-test="user-name" class="el-card__header__name">Nahla Galal</nuxt-link>
+
+  <!-- Link to post -->
+  <nuxt-link to="/post/1" data-test="post-link" class="el-card__header__link">
+    <el-icon size="16"><TopRight /></el-icon>
+  </nuxt-link>
+</template>
+
+<script setup>
+import { TopRight } from '@element-plus/icons-vue'
+</script>
+
+<style lang="scss">
+.el-card {
+  .el-card__header {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+    border: 0;
+  
+    &__avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--el-border-radius-circle);
+      background: var(--el-color-primary);
+      color: var(--el-color-white);
+      font-weight: 700;
+      font-size: 20px;
+    }
+  
+    &__name {
+      font-size: 14px;
+      color: var(--el-color-black);
+      font-weight: 500;
+      text-decoration: none;
+    }
+  
+    &__link {
+      color: var(--el-color-black);
+      margin-left: auto;
+      text-decoration: none;
+    }
+  }
+}
+</style>
