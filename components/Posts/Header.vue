@@ -12,11 +12,8 @@
 
     <!-- Search input  -->
     <div class="Header__search">
-      <input type="search" placeholder="Search" name="search" data-test="search-input" v-model="search"
-        class="Header__search__input" />
-      <span class="Header__search__left">
-        <!-- <FiSearch className="text-greyColor w-5 h-5" /> -->
-      </span>
+      <el-input type="search" placeholder="Search" name="search" data-test="search-input" v-model="search"
+        class="Header__search__input" :prefix-icon="Search" />
     </div>
 
     <!-- Span for background only  -->
@@ -28,6 +25,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { Calendar, Search } from '@element-plus/icons-vue'
 
 const search = ref("");
 </script>
@@ -79,20 +77,29 @@ const search = ref("");
     margin: 40px auto 0;
 
     &__input {
-      max-width: 100%;
-      padding: 12px 16px 12px 44px;
-      color: var(--el-text-color-primary);
-      border-radius: 8px;
+      .el-input {
+        &__wrapper {
+          border-radius: 8px;
+          max-width: 100%;
+          border: 0;
+          box-shadow: none;
 
-      @media (min-width: 640px) {
-        max-width: 320px;
+          @media (min-width: 640px) {
+            max-width: 320px;
+          }
+        }
+
+        &__inner {
+          color: var(--el-text-color-primary);
+          height: 48px;
+        }
+
+        &__icon,
+        &__icon svg {
+          width: 20px;
+          height: 20px;
+        }
       }
-    }
-
-    &__left {
-      position: absolute;
-      top: 12px;
-      left: 16px;
     }
   }
 
