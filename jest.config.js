@@ -13,12 +13,4 @@ module.exports = {
     "^@/(.*)$": "<rootDir>/src/$1",
   },
   testPathIgnorePatterns: ["/node_modules/", "/.nuxt/"],
-  collectCoverage: true,
-  collectCoverageFrom: [
-    "<rootDir>/components/**/*.vue",
-    "<rootDir>/pages/**/*.vue",
-    "<rootDir>/store/**/*.js",
-  ],
-  coverageDirectory: "<rootDir>/tests/coverage",
-  coverageReporters: ["lcov", "text"],
 };
