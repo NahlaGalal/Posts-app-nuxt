@@ -37,4 +37,35 @@ $-font-family: (
 body {
   margin: 0;
   font-family: var(--el-font-family);
+  line-height: 1.5;
+
+  // Restore styling
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: 400;
+    border: 0;
+  }
+
+  .custom-container {
+    padding-left: 10%;
+    padding-right: 10%;
+    
+    @media screen and (max-width: 768px) {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  .strict-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .strict-lines--one {
+    -webkit-line-clamp: 1;
+  }
 }
