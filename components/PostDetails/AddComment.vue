@@ -9,8 +9,10 @@
 
     <el-form-item>
       <el-input type="textarea" placeholder="Message" :model-value="addCommentForm.message"
-        @input="$emit('update:modelValue', $event.target.value)" @focus="expandInputHandler"
-        :style="{ height: isExpand ? '128px' : '64px' }" />
+        @input="$emit('update:modelValue', $event.target.value)" @focus="expandInputHandler" :class="{
+          expanded:
+            isExpand
+        }" data-test="comment-textarea" />
     </el-form-item>
 
     <el-alert data-test="comment-success" class="Addition__success" type="success" show-icon
@@ -25,7 +27,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 
 defineProps({
   addCommentForm: {
@@ -81,7 +83,8 @@ const collapsenputHandler = () => isExpand.value = false;
 
       .el-textarea {
         transition: all 0.3s ease-in-out;
-        
+        height: 64px;
+
         &__inner {
           border-radius: 8px;
           border: var(--el-border);
@@ -89,6 +92,10 @@ const collapsenputHandler = () => isExpand.value = false;
           padding: 10px 14px;
           color: var(--el-color-black);
           height: 100%;
+        }
+
+        &.expanded {
+          height: 128px;
         }
       }
     }

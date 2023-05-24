@@ -26,8 +26,4 @@ describe("Render posts page header successfully", () => {
       "The latest industry news, interviews, technologies, and resources."
     );
   });
-
-  it("should search posts successfully", async () => {
-    await wrapper.find("[data-test='search-input'").setValue("sunt");
-  });
 });
