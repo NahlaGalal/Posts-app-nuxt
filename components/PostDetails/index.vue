@@ -37,6 +37,10 @@
     </article>
 
     <PostDetailsComments :commentsNum="post.comments.length">
+      <template #add-comment>
+        <PostDetailsAddComment :addCommentForm="addCommentForm" @addComment="addComment" />
+      </template>
+
       <template #comments-list>
         <PostDetailsComment v-for="comment in post.comments" :comment="comment" :key="comment.id" />
       </template>
@@ -50,6 +54,14 @@ import { LocationFilled, PhoneFilled } from "@element-plus/icons-vue"
 defineProps({
   post: {
     type: Object,
+    required: true
+  },
+  addCommentForm: {
+    type: Object,
+    required: true
+  },
+  addComment: {
+    type: Function,
     required: true
   }
 })
