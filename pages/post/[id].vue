@@ -1,5 +1,6 @@
 <template>
-  <PostDetails :post="post" :addCommentForm="addCommentForm" :addComment="onAddCommentHandler" />
+  <Loading v-if="pending" />
+  <PostDetails v-else :post="post" :addCommentForm="addCommentForm" :addComment="onAddCommentHandler" />
 </template>
 
 <script setup>
@@ -21,7 +22,7 @@ const addCommentForm = reactive({
 
 const { params: { id } } = useRoute();
 
-const { data: post } = useFetch(`https://jsonplaceholder.typicode.com/posts/${id}?_embed=comments&_expand=user`)
+const { data: post, pending } = useFetch(`https://jsonplaceholder.typicode.com/posts/${id}?_embed=comments&_expand=user`)
 
 const onAddCommentHandler = async (data) => {
   console.log(data);

@@ -1,6 +1,9 @@
 <template>
-  <User :user="user" />
-  <PostsCardsContainer :posts="user.posts.map(post => ({ ...post, user }))" />
+  <Loading v-if="pending" />
+  <div v-else>
+    <User :user="user" />
+    <PostsCardsContainer :posts="user.posts.map(post => ({ ...post, user }))" />
+  </div>
 </template>
 
 <script setup>
@@ -14,5 +17,5 @@ useHead({
 
 const { params: { id } } = useRoute();
 
-const { data: user } = useFetch(`https://jsonplaceholder.typicode.com/users/${id}?_embed=posts`)
+const { data: user, pending } = useFetch(`https://jsonplaceholder.typicode.com/users/${id}?_embed=posts`)
 </script>
