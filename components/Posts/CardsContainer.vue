@@ -50,7 +50,7 @@ defineEmits(['loadMore'])
     display: block;
     width: max-content;
     padding: 10px 16px;
-    font-size: 14px;
+    font-size: var(--el-font-size-base);
     line-height: initial;
     border-radius: 8px;
     margin: 40px auto 0;

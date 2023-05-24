@@ -72,7 +72,7 @@ defineProps({
   }
 
   &__body {
-    font-size: 20px;
+    font-size: var(--el-font-size-extra-large);
     color: var(--el-text-color-primary);
     margin: auto;
 
@@ -86,7 +86,7 @@ defineProps({
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
-    border-top: 1px solid var(--el-text-color-primary);
+    border-top: var(--el-border);
     margin: 48px auto 0;
     padding-top: 24px;
 
@@ -100,15 +100,15 @@ defineProps({
       align-items: center;
       width: 56px;
       height: 56px;
-      border-radius: 50%;
+      border-radius: var(--el-border-radius-circle);
       background: var(--el-color-primary);
       color: var(--el-color-white);
       font-weight: 700;
-      font-size: 20px;
+      font-size: var(--el-font-size-extra-large);
     }
 
     &__name {
-      font-size: 18px;
+      font-size: var(--el-font-size-large);
       font-weight: 600;
       color: var(--el-color-black);
       text-decoration: none;

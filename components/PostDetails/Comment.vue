@@ -41,7 +41,7 @@ defineProps({
     background-color: var(--el-color-primary);
     color: var(--el-color-white);
     font-weight: 700;
-    font-size: 20px;
+    font-size: var(--el-font-size-extra-large);
   }
 
   &__container {
@@ -52,12 +52,12 @@ defineProps({
 
     &__name {
       color: var(--el-color-success);
-      font-size: 18px;
+      font-size: var(--el-font-size-large);
     }
 
     &__email {
       color: var(--el-text-color-primary);
-      font-size: 14px;
+      font-size: var(--el-font-size-base);
       margin-bottom: 16px;
     }
   }

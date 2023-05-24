@@ -51,11 +51,11 @@ defineProps({
       background: var(--el-color-primary);
       color: var(--el-color-white);
       font-weight: 700;
-      font-size: 20px;
+      font-size: var(--el-font-size-extra-large);
     }
 
     &__name {
-      font-size: 14px;
+      font-size: var(--el-font-size-base);
       color: var(--el-color-black);
       font-weight: 500;
       text-decoration: none;

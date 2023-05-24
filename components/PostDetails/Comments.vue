@@ -25,7 +25,7 @@ defineProps({
 .Comments {
   padding-top: 24px;
   margin-top: 40px;
-  border-top: 1px solid var(--el-text-color-primary);
+  border-top: var(--el-border);
 
   &__header {
     font-size: 24px;

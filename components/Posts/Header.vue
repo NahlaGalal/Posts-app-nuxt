@@ -39,7 +39,7 @@ defineEmits(['update:modelValue'])
   background-color: var(--el-color-info);
 
   &__tag {
-    font-size: 14px;
+    font-size: var(--el-font-size-base);
     font-weight: 500;
     padding: 4px 12px;
     color: var(--el-color-primary);
@@ -64,7 +64,7 @@ defineEmits(['update:modelValue'])
     }
 
     &--sub {
-      font-size: 20px;
+      font-size: var(--el-font-size-extra-large);
       color: var(--el-color-success);
       text-align: center;
     }

@@ -31,11 +31,16 @@ $-font-family: (
   ),
 );
 
+$-border-color: (
+  "": rgba(153, 153, 153, 0.2),
+);
+
 @forward "element-plus/theme-chalk/src/common/var.scss" with (
   $colors: $-colors,
   $text-color: $-text-colors,
   $box-shadow: $-box-shadow,
-  $font-family: $-font-family
+  $font-family: $-font-family,
+  $border-color: $-border-color
 );
 
 body {
@@ -49,6 +54,7 @@ body {
     margin: 0;
     font-weight: 400;
     border: 0;
+    font-size: 16px;
   }
 
   .custom-container {
