@@ -15,7 +15,7 @@
     </el-row>
 
     <!-- Load more -->
-    <el-button type="success">Load more</el-button>
+    <el-button type="success" @click="$emit('loadMore')" v-if="isLoadMore">Load more</el-button>
   </main>
 </template>
 
@@ -24,12 +24,20 @@ defineProps({
   posts: {
     type: Array,
     default: [],
+  },
+  isLoadMore: {
+    type: Boolean,
+    default: false,
   }
 })
+
+defineEmits(['loadMore'])
 </script>
 
 <style lang="scss">
 .Cards-container {
+  margin-bottom: 112px;
+
   .el-row {
     row-gap: 48px;
   }

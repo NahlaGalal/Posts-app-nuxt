@@ -12,7 +12,7 @@
 
     <!-- Search input  -->
     <div class="Header__search">
-      <el-input type="search" placeholder="Search" name="search" data-test="search-input" :value="modelValue"
+      <el-input type="search" placeholder="Search" name="search" data-test="search-input" :model-value="modelValue"
         @input="$emit('update:modelValue', $event)" class="Header__search__input" :prefix-icon="Search" />
     </div>
 
