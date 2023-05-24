@@ -1,5 +1,7 @@
 <template>
-  <PostsHeader v-model="search" />
+  <client-only>
+    <PostsHeader v-model="search" />
+  </client-only> 
   <Loading v-if="pending || loading" />
   <PostsCardsContainer v-else :posts="posts.posts" :isLoadMore="isLoadMore" @loadMore="loadMore" />
 </template>
