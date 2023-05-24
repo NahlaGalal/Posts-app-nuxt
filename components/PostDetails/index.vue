@@ -14,22 +14,33 @@
 
         <div>
           <!-- Author name -->
-          <nuxt-link :to="'/user/' + post.user.id" data-test="author-name" class="Details__author__name">{{ post.user.name }}</nuxt-link>
+          <nuxt-link :to="'/user/' + post.user.id" data-test="author-name" class="Details__author__name">{{ post.user.name
+          }}</nuxt-link>
 
           <!-- Author company -->
           <p data-test="author-company" class="Details__author__company">
-            <el-icon><LocationFilled /></el-icon>
+            <el-icon>
+              <LocationFilled />
+            </el-icon>
             {{ post.user.company.name }}
           </p>
 
           <!-- Author phone -->
           <p data-test="author-phone" class="Details__author__phone">
-            <el-icon><PhoneFilled /></el-icon>
+            <el-icon>
+              <PhoneFilled />
+            </el-icon>
             {{ post.user.phone }}
           </p>
         </div>
       </section>
     </article>
+
+    <PostDetailsComments :commentsNum="post.comments.length">
+      <template #comments-list>
+        <PostDetailsComment v-for="comment in post.comments" :comment="comment" :key="comment.id" />
+      </template>
+    </PostDetailsComments>
   </main>
 </template>
 
@@ -69,7 +80,7 @@ defineProps({
       width: 75%
     }
   }
-  
+
   &__author {
     display: flex;
     align-items: center;
@@ -78,7 +89,7 @@ defineProps({
     border-top: 1px solid var(--el-text-color-primary);
     margin: 48px auto 0;
     padding-top: 24px;
-    
+
     @media screen and (min-width: 767px) {
       width: 75%
     }
@@ -103,7 +114,8 @@ defineProps({
       text-decoration: none;
     }
 
-    &__company, &__phone {
+    &__company,
+    &__phone {
       color: var(--el-color-black);
       display: flex;
       gap: 4px;
