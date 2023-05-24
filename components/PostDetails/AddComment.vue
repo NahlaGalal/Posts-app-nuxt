@@ -9,20 +9,24 @@
 
     <el-form-item>
       <el-input type="textarea" placeholder="Message" :model-value="addCommentForm.message"
-        @input="$emit('update:modelValue', $event.target.value)" />
+        @input="$emit('update:modelValue', $event.target.value)" @focus="expandInputHandler"
+        :style="{ height: isExpand ? '128px' : '64px' }" />
     </el-form-item>
 
     <el-alert data-test="comment-success" class="Addition__success" type="success" show-icon
       title="Comment added successfully" />
 
-    <div class="Addition__btns">
+    <div class="Addition__btns" v-if="isExpand">
       <el-button native-type="submit" type="success" data-test="submit-comment">Submit</el-button>
-      <el-button native-type="reset" type="info" data-test="cancel-comment" class="Addition__btns__cancel">Cancel</el-button>
+      <el-button native-type="reset" type="info" data-test="cancel-comment" class="Addition__btns__cancel"
+        @click="collapsenputHandler">Cancel</el-button>
     </div>
   </el-form>
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 defineProps({
   addCommentForm: {
     type: Object,
@@ -42,6 +46,11 @@ const rules = reactive({
     required: true, message: "Message input is required"
   }]
 })
+
+const isExpand = ref(false);
+
+const expandInputHandler = () => isExpand.value = true;
+const collapsenputHandler = () => isExpand.value = false;
 </script>
 
 <style lang="scss">
@@ -70,14 +79,17 @@ const rules = reactive({
         }
       }
 
-      .el-textarea__inner {
-        border-radius: 8px;
-        border: var(--el-border);
-        box-shadow: none;
-        padding: 10px 14px;
-        height: 128px;
-        color: var(--el-color-black);
+      .el-textarea {
         transition: all 0.3s ease-in-out;
+        
+        &__inner {
+          border-radius: 8px;
+          border: var(--el-border);
+          box-shadow: none;
+          padding: 10px 14px;
+          color: var(--el-color-black);
+          height: 100%;
+        }
       }
     }
   }
@@ -89,7 +101,7 @@ const rules = reactive({
 
     &__cancel {
       background-color: var(--el-color-black);
-      
+
       &:hover {
         background-color: var(--el-color-black);
       }
