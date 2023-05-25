@@ -1,22 +1,30 @@
 <template >
-  <el-form :model="addCommentForm" class="Addition" @submit.prevent="$emit('addComment')" :rules="rules">
-    <el-form-item>
-      <el-input placeholder="Name" :model-value="addCommentForm.name"
-        @input="$emit('update:modelValue', $event.target.value)" />
-      <el-input placeholder="Email" :model-value="addCommentForm.email"
-        @input="$emit('update:modelValue', $event.target.value)" />
-    </el-form-item>
+  <el-form :model="modelValue" class="Addition" @submit.prevent="$emit('addComment', ruleFormRef)" :rules="rules"
+    novalidate ref="ruleFormRef">
+    <el-row :gutter="16">
+      <el-col :sm="12">
+        <el-form-item prop="name">
+          <el-input name="name" type="text" placeholder="Name" v-model="modelValue.name" />
+        </el-form-item>
+      </el-col>
 
-    <el-form-item>
-      <el-input type="textarea" placeholder="Message" :model-value="addCommentForm.message"
-        @input="$emit('update:modelValue', $event.target.value)" @focus="expandInputHandler" :class="{
+      <el-col :sm="12">
+        <el-form-item prop="email">
+          <el-input name="email" type="email" placeholder="Email" v-model="modelValue.email" />
+        </el-form-item>
+      </el-col>
+    </el-row>
+
+    <el-form-item prop="comment">
+      <el-input type="textarea" name="comment" placeholder="Comment" v-model="modelValue.comment"
+        @focus="expandInputHandler" :class="{
           expanded:
             isExpand
         }" data-test="comment-textarea" />
     </el-form-item>
 
     <el-alert data-test="comment-success" class="Addition__success" type="success" show-icon
-      title="Comment added successfully" />
+      title="Comment added successfully" v-if="isSuccess" />
 
     <div class="Addition__btns" v-if="isExpand">
       <el-button native-type="submit" type="success" data-test="submit-comment">Submit</el-button>
@@ -29,30 +37,54 @@
 <script setup>
 import { ref, reactive } from "vue";
 
-defineProps({
-  addCommentForm: {
+const { handleSuccessFlag } = defineProps({
+  modelValue: {
     type: Object,
     required: true
+  },
+  handleSuccessFlag: {
+    type: Boolean,
+    default: false
   }
-})
+});
 
 defineEmits(["addComment"])
+
+const ruleFormRef = ref();
 
 const rules = reactive({
   name: [{
     required: true,
     message: "Name input is required",
   }],
-  email: [{ type: "email", required: true, message: "Email input is required" }],
-  message: [{
+  email: [
+    {
+      required: true,
+      message: "Email input is required"
+    }, {
+      type: "email",
+      message: "Email must be valid"
+    }
+  ],
+  comment: [{
     required: true, message: "Message input is required"
   }]
 })
 
-const isExpand = ref(false);
+let isExpand = ref(false);
+let isSuccess = ref(false);
 
 const expandInputHandler = () => isExpand.value = true;
 const collapsenputHandler = () => isExpand.value = false;
+
+watch(() => handleSuccessFlag, () => {
+  isSuccess.value = true;
+  isExpand.value = false;
+
+  setTimeout(() => {
+    isSuccess.value = false;
+  }, 1000)
+})
 </script>
 
 <style lang="scss">
@@ -62,12 +94,7 @@ const collapsenputHandler = () => isExpand.value = false;
 
   .el-form {
     &-item__content {
-      gap: 16px;
-
       .el-input {
-        flex: 1;
-        min-width: 200px;
-
         &__wrapper {
           border-radius: 8px;
           border: var(--el-border);

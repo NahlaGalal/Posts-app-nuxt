@@ -38,7 +38,7 @@
 
     <PostDetailsComments :commentsNum="post.comments.length">
       <template #add-comment>
-        <PostDetailsAddComment :addCommentForm="addCommentForm" @addComment="addComment" />
+        <PostDetailsAddComment :modelValue="modelValue" @addComment="addComment" :handleSuccessFlag="handleSuccessFlag" />
       </template>
 
       <template #comments-list>
@@ -56,13 +56,17 @@ defineProps({
     type: Object,
     required: true
   },
-  addCommentForm: {
+  modelValue: {
     type: Object,
     required: true
   },
   addComment: {
     type: Function,
     required: true
+  },
+  handleSuccessFlag: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
